@@ -1,0 +1,33 @@
+<div class="modal-edit-bg" (click)="cerrar()">
+  <div class="config-dialog" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="cerrar()" title="Cerrar">×</button>
+    <h2>{{ config ? 'Editar Reloj' : 'Nuevo Reloj' }}</h2>
+    <form (ngSubmit)="submit()" #f="ngForm" autocomplete="off">
+      <label>Hora inicio:
+        <input type="time" [(ngModel)]="formConfig.horaInicio" name="horaInicio" required>
+      </label>
+      <label>Color de los números:
+        <input type="color" [(ngModel)]="formConfig.colorNumeros" name="colorNumeros">
+      </label>
+      <label>Color de los puntos/rayitas:
+        <input type="color" [(ngModel)]="formConfig.colorPuntos" name="colorPuntos">
+      </label>
+      <label>Color manecilla hora:
+        <input type="color" [(ngModel)]="formConfig.colorManecillaHora" name="colorManecillaHora">
+      </label>
+      <label>Color manecilla minuto:
+        <input type="color" [(ngModel)]="formConfig.colorManecillaMinuto" name="colorManecillaMinuto">
+      </label>
+      <label>Color manecilla segundo:
+        <input type="color" [(ngModel)]="formConfig.colorManecillaSegundo" name="colorManecillaSegundo">
+      </label>
+      <label>Color etiqueta:
+        <input type="color" [(ngModel)]="formConfig.colorEtiqueta" name="colorEtiqueta">
+      </label>
+      <div class="dialog-actions">
+        <button type="submit">{{ config ? 'Guardar' : 'Crear' }}</button>
+        <button type="button" (click)="cerrar()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

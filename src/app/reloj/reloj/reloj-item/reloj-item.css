@@ -1,0 +1,143 @@
+.reloj-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5em 1em 1.5em 1em;
+  background: #fff;
+  border-radius: 2em;
+  box-shadow: 0 4px 28px #0001;
+  margin-bottom: 2em;
+  position: relative;
+}
+
+.reloj-actions {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 1em;
+  right: 1.2em;
+  z-index: 2;
+}
+
+.ojito-btn,
+.edit-btn {
+  background: none;
+  border: none;
+  padding: 0.1em 0.3em;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #222;
+  margin-left: 0.1em;
+  transition: background 0.17s, color 0.17s;
+  outline: none;
+}
+.ojito-btn:hover,
+.ojito-btn:focus-visible,
+.edit-btn:hover,
+.edit-btn:focus-visible {
+  background: #eee;
+  color: #333;
+}
+
+.reloj-label {
+  margin-top: 1.6em;
+  padding: 0.4em 1.2em;
+  border-radius: 1em;
+  font-weight: bold;
+  font-size: 1.1em;
+  background: #232526;
+  letter-spacing: 0.07em;
+}
+
+.reloj-analog svg {
+  display: block;
+  margin-bottom: 1.1em;
+}
+
+/* MODAL CSS */
+.modal-edit-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 30, 30, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+.modal-edit {
+  background: #fff;
+  border-radius: 1.7em;
+  padding: 2.2em 2em 1.6em 2em;
+  box-shadow: 0 8px 40px #23252633;
+  min-width: 270px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: pop-in 0.17s cubic-bezier(0.5,1.7,0.3,0.7);
+}
+@keyframes pop-in {
+  from { transform: scale(0.92); opacity: 0;}
+  to   { transform: scale(1); opacity: 1;}
+}
+
+.close-btn {
+  position: absolute;
+  right: 1em;
+  top: 0.7em;
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  color: #555;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  transition: background 0.16s;
+}
+.close-btn:hover,
+.close-btn:focus-visible {
+  background: #eaeaea;
+}
+
+.modal-hora {
+  font-size: 2.3em;
+  font-weight: bold;
+  margin: 1.5em 0 1.1em 0;
+  color: #222;
+  letter-spacing: 0.07em;
+  background: #232526;
+  border-radius: 1em;
+  padding: 0.27em 1em;
+  color: #fff;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1.4em;
+  margin-top: 1.1em;
+}
+.modal-actions button {
+  background: #3f704f;
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  border-radius: 0.8em;
+  width: 1.8em;
+  height: 1.8em;
+  cursor: pointer;
+  transition: background 0.18s;
+  box-shadow: 0 2px 12px #3f704f33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-actions button:hover {
+  background: #73a55c;
+}

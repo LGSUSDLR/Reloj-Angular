@@ -1,0 +1,8 @@
+.reloj-list {
+  display: flex;
+  flex-direction: row;      /* en fila horizontal */
+  gap: 2em;                 /* espacio entre relojes */
+  justify-content: flex-start; /* o center si prefieres */
+  align-items: flex-start;  /* para que todos estén alineados arriba */
+  flex-wrap: wrap;          /* permite que brinquen a otra línea si hay muchos */
+}

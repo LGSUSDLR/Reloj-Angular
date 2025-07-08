@@ -1,0 +1,99 @@
+<div class="reloj-card reloj-analog">
+  <div class="reloj-actions">
+    <button class="ojito-btn" (click)="showEdit = true" title="Editar segundos">
+      <!-- SVG ojito -->
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <ellipse cx="12" cy="12" rx="10" ry="5"/>
+        <circle cx="12" cy="12" r="2.5"/>
+      </svg>
+    </button>
+    <button class="edit-btn" (click)="onEditar.emit(reloj)" title="Editar reloj">
+      <!-- SVG lápiz -->
+      <svg width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" viewBox="0 0 24 24" style="margin-left: 0.3em;">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+      </svg>
+    </button>
+  </div>
+  <svg [attr.width]="size" [attr.height]="size" viewBox="0 0 200 200">
+    <!-- Fondo del reloj -->
+    <circle cx="100" cy="100" r="90" fill="#fff" stroke="#e5e7eb" stroke-width="5"/>
+    
+    <!-- Números del reloj -->
+    <ng-container *ngFor="let n of numeros">
+      <text
+        [attr.x]="getNumeroX(n)"
+        [attr.y]="getNumeroY(n)"
+        [attr.fill]="reloj.colorNumeros"
+        text-anchor="middle"
+        dominant-baseline="middle"
+        font-size="20"
+        font-weight="bold">
+        {{n}}
+      </text>
+    </ng-container>
+    
+    <!-- Puntos o rayitas del reloj -->
+    <ng-container *ngFor="let i of marcas">
+      <rect
+        [attr.x]="getMarcaX(i)"
+        [attr.y]="getMarcaY(i)"
+        [attr.width]="4"
+        [attr.height]="i % 5 === 0 ? 14 : 8"
+        [attr.fill]="reloj.colorPuntos"
+        [attr.transform]="getMarcaTransform(i)"
+        rx="2"/>
+    </ng-container>
+    
+    <!-- Manecilla horas -->
+    <rect
+      x="98.5" y="68"
+      width="3" height="32"
+      rx="2"
+      [attr.fill]="reloj.colorManecillaHora"
+      [attr.transform]="getHoraTransform()"
+      style="transition: transform 0.4s cubic-bezier(.46,2,.48,.76)"/>
+      
+    <!-- Manecilla minutos -->
+    <rect
+      x="99" y="36"
+      width="2" height="64"
+      rx="2"
+      [attr.fill]="reloj.colorManecillaMinuto"
+      [attr.transform]="getMinutoTransform()"
+      style="transition: transform 0.18s cubic-bezier(.46,2,.48,.76)"/>
+      
+    <!-- Manecilla segundos -->
+    <rect
+      x="99.5" y="24"
+      width="1" height="76"
+      rx="1"
+      [attr.fill]="reloj.colorManecillaSegundo"
+      [attr.transform]="getSegundoTransform()"
+      style="transition: transform 0.07s linear"/>
+      
+    <!-- Centro del reloj -->
+    <circle cx="100" cy="100" r="5" fill="#222"/>
+  </svg>
+  
+  <!-- Etiqueta de hora abajo -->
+  <div class="reloj-label"
+       [style.backgroundColor]="reloj.colorEtiqueta"
+       [style.color]="'#fff'">
+    {{ reloj.horaActual }}
+  </div>
+
+  <!-- Modal para editar segundos -->
+  <div *ngIf="showEdit" class="modal-edit-bg">
+    <div class="modal-edit">
+      <button class="close-btn" (click)="showEdit = false" title="Cerrar">×</button>
+      <div class="modal-hora">{{ reloj.horaActual }}</div>
+      <div class="modal-actions">
+        <button (click)="aumentarSegundo()" title="Aumentar segundo">+</button>
+        <button (click)="bajarSegundo()" title="Bajar segundo">-</button>
+      </div>
+    </div>
+  </div>
+</div>
