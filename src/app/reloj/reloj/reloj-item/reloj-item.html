@@ -78,12 +78,12 @@
     <circle cx="100" cy="100" r="5" fill="#222"/>
   </svg>
   
-  <!-- Etiqueta de hora abajo -->
-  <div class="reloj-label"
-       [style.backgroundColor]="reloj.colorEtiqueta"
-       [style.color]="'#fff'">
-    {{ reloj.horaActual }}
-  </div>
+    <!-- Etiqueta de hora abajo -->
+    <div class="reloj-label"
+        [style.backgroundColor]="reloj.colorEtiqueta"
+        [style.color]="'#fff'">
+      {{ reloj.horaActual }}
+    </div>
 
   <!-- Modal para editar segundos -->
   <div *ngIf="showEdit" class="modal-edit-bg">

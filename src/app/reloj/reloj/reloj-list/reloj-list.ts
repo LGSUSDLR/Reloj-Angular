@@ -21,6 +21,7 @@ import { Reloj } from '../model';
     <app-reloj-config-dialog
       *ngIf="editDialogOpen"
       [config]="selectedReloj"
+      [relojId]="selectedReloj?.id || null"
       (configurado)="guardarEdicion($event)"
       (cancelar)="editDialogOpen = false">
     </app-reloj-config-dialog>

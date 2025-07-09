@@ -64,6 +64,21 @@
   font-size: 1.05em;
   color: #222;
 }
+
+.hora-label-fields {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.hora-label-fields input[type="number"] {
+  width: 2.7em;
+  font-size: 1.1em;
+  border: 1px solid #bbb;
+  border-radius: 0.5em;
+  padding: 0.13em 0.4em;
+  text-align: center;
+}
+
 .config-dialog input[type="color"] {
   width: 2.1em;
   height: 2.1em;
@@ -105,4 +120,42 @@
 }
 .dialog-actions button[type="button"]:hover {
   background: #ccc;
+}
+
+
+/* Hora simulada label bonito y consistente */
+.hora-simulada-label {
+  font-size: 1.03em;
+  color: #4a595a;
+  margin: 0.4em 0 1.2em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.hora-simulada-valor {
+  font-family: 'JetBrains Mono', 'Menlo', 'Consolas', monospace;
+  color: #34722e;
+  background: #e8fbe4;
+  border: 1.5px solid #cce9be;
+  padding: 3px 11px;
+  border-radius: 7px;
+  font-size: 1.09em;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 5px #aacc8f25;
+}
+
+.config-dialog input[type="color"]:focus {
+  outline: 2px solid #73a55c;
+  outline-offset: 2px;
+}
+
+.config-dialog input[type="time"]:focus {
+  border-color: #73a55c;
+  background: #eaf9f0;
+}
+
+.dialog-actions button[type="submit"] {
+  background: #3f704f;
 }

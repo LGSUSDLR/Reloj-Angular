@@ -13,10 +13,17 @@ import { CommonModule } from '@angular/common';
 })
 export class DashboardComponent {
   dialogoAbierto = false;
+
   constructor(private relojVm: RelojVmService) {}
 
-  abrirDialogo() { this.dialogoAbierto = true; }
-  cerrarDialogo() { this.dialogoAbierto = false; }
+  abrirDialogo() { 
+    this.dialogoAbierto = true; 
+  }
+
+  cerrarDialogo() { 
+    this.dialogoAbierto = false; 
+  }
+
   agregarReloj(config: any) {
     this.relojVm.addReloj(config);
     this.cerrarDialogo();

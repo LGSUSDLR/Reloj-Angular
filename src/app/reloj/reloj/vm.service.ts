@@ -11,6 +11,11 @@ export class RelojVmService {
     setInterval(() => this.avanzarTiempos(), 1000);
   }
 
+  // Getter público para el valor actual
+  get relojesValue(): Reloj[] {
+    return this.relojesSubject.value;
+  }
+
   addReloj(config: Omit<Reloj, 'id' | 'horaActual'>) {
     const id = crypto.randomUUID();
     const horaActual = config.horaInicio;
@@ -27,7 +32,6 @@ export class RelojVmService {
   }
 
   private siguienteSegundo(hora: string) {
-    // hora en formato "HH:mm:ss"
     const [h, m, s] = hora.split(':').map(Number);
     let date = new Date();
     date.setHours(h, m, s + 1, 0);
@@ -39,20 +43,17 @@ export class RelojVmService {
   }
 
   editarReloj(id: string, cambios: Partial<RelojConfig>) {
-  const lista = this.relojesSubject.value.map(r => {
-    if (r.id === id) {
-      // Si cambió la hora de inicio, también actualiza la actual
-      const nuevaHora = cambios.horaInicio ?? r.horaInicio;
-      return {
-        ...r,
-        ...cambios,
-        horaActual: nuevaHora
-      };
-    }
-    return r;
-  });
-  this.relojesSubject.next(lista);
-}
-
-
+    const lista = this.relojesSubject.value.map(r => {
+      if (r.id === id) {
+        const nuevaHora = cambios.horaInicio ?? r.horaInicio;
+        return {
+          ...r,
+          ...cambios,
+          horaActual: nuevaHora
+        };
+      }
+      return r;
+    });
+    this.relojesSubject.next(lista);
+  }
 }

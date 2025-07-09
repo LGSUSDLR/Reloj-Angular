@@ -4,8 +4,20 @@
     <h2>{{ config ? 'Editar Reloj' : 'Nuevo Reloj' }}</h2>
     <form (ngSubmit)="submit()" #f="ngForm" autocomplete="off">
       <label>Hora inicio:
-        <input type="time" [(ngModel)]="formConfig.horaInicio" name="horaInicio" required>
+        <input
+          type="time"
+          [(ngModel)]="formConfig.horaInicio"
+          name="horaInicio"
+          required
+          (input)="onHoraInput()"
+          (focus)="editando=true"
+          (blur)="editando=false"
+        >
       </label>
+      <div class="hora-simulada-label">
+        Hora simulada:
+        <span class="hora-simulada-valor">{{ horaSimulada }}</span>
+      </div>
       <label>Color de los números:
         <input type="color" [(ngModel)]="formConfig.colorNumeros" name="colorNumeros">
       </label>

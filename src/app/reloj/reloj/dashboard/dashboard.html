@@ -1,7 +1,9 @@
-<button (click)="abrirDialogo()">Agregar reloj</button>
-<app-reloj-list></app-reloj-list>
-<app-reloj-config-dialog
+
+ <button (click)="abrirDialogo()">Agregar reloj</button>
+ <app-reloj-list></app-reloj-list>
+ <app-reloj-config-dialog
   *ngIf="dialogoAbierto"
+  [relojId]="null"
   (configurado)="agregarReloj($event)"
-  (cancelar)="cerrarDialogo()">
-</app-reloj-config-dialog>
+   (cancelar)="cerrarDialogo()">
+  </app-reloj-config-dialog>
